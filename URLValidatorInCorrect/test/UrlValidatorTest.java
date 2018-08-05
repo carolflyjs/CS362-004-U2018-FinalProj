@@ -22,7 +22,16 @@ public class UrlValidatorTest extends TestCase {
    public void testManualTest()
    {
 //You can use this function to implement your manual testing	   
-	   
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   // MANUAL TEST 1
+	   System.out.printf("Testing http://www.google.com%n");
+	   boolean res =  urlVal.isValid("http://www.google.com");
+	   if (res) {
+		   System.out.printf("PASS: %b%n", res); 
+	   } else {
+		   System.out.printf("FAIL: %b%n", res);
+	   }
+	   assertTrue(res);
    }
    
    
@@ -43,7 +52,9 @@ public class UrlValidatorTest extends TestCase {
 	   //You can use this function for programming based testing
 
    }
-   
 
-
+   public static void main(String[] argv) {
+		  UrlValidatorTest fct = new UrlValidatorTest("url test");
+	      fct.testManualTest();
+	   } 
 }
