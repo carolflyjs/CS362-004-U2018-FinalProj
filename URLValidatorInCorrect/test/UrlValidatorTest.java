@@ -35,6 +35,7 @@ public class UrlValidatorTest extends TestCase {
 	   
    }*/
    
+   //Partiton source: https://en.wikipedia.org/wiki/URL
    
    /*public void testYourFirstPartition()
    {
@@ -68,6 +69,7 @@ public class UrlValidatorTest extends TestCase {
 	   
 	   String otherParts = "www.google.com";
 	   
+	   System.out.println();
 	   System.out.println("-----Second Partition: Schemes-----");
 	   
 	   //test isValid() with supposedly valid URL's
@@ -97,6 +99,57 @@ public class UrlValidatorTest extends TestCase {
    }
    //You need to create more test cases for your Partitions if you need to 
    
+   public void testYourThirdPartition(){
+		 //You can use this function to implement your Second Partition testing
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   
+	   //The second partition tests the PATH validation of isValide().
+	   String testString;
+	   String prefix = "http://www.google.com";
+	   
+	   String[] truePath = {"", 
+			   				"/test1", 
+			   				"/test1/", 
+			   				"/t123", 
+			   				"/123", 
+			   				"/$23"};
+	   
+	   String[] falsePath = {"/..", 
+			   					"/../", 
+			   					"//.", 
+			   					"//.//", 
+			   					"/test1//file", 
+			   					"//test/file"};
+	   
+	   
+	   System.out.println();
+	   System.out.println("-----Third Partition: Path-----");
+	   
+	   //test isValid() with supposedly valid URL's
+	   for (int i = 0; i < truePath.length; i++) {
+		   
+		   testString = prefix + truePath[i];
+		   
+		   boolean result = urlVal.isValid(testString);
+		   
+		   System.out.println("\"" + testString + "\"" + "--	Expected: true;	Actual Result: " + result);
+		   
+		   testString = "";
+	   }
+	   
+	   //test isValid() with supposedly invalid URL's
+	   for (int j = 0; j < falsePath.length; j++) {
+		   
+		   testString = prefix + falsePath[j];
+		   
+		   boolean result = urlVal.isValid(testString);
+		   
+		   System.out.println("\"" + testString + "\"" + "--	Expected: false;	Actual Result: " + result);
+		   
+		   testString = "";
+	   }
+	   
+ }
    
    
    public void testIsValid()
