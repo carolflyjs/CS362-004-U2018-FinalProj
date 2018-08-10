@@ -152,6 +152,102 @@ public class UrlValidatorTest extends TestCase {
  }
    
    
+   public void testYourForthPartition(){
+		 //You can use this function to implement your Second Partition testing
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   
+	   //The second partition tests the QUERY validation of isValide().
+	   String testString;
+	   String prefix = "http://www.google.com/";
+	   
+	   String[] trueQuery = {"", 
+			   				"?action=edit", 
+			   				"?action=edit&mode=up", 
+			   				"?action=edit&ampmode=up"};
+	   
+	   String[] falseQuery = {"@action=edit", 
+			   					"!action=edit", 
+			   					"&action=edit"};
+	   
+	   
+	   System.out.println();
+	   System.out.println("-----Forth Partition: Query-----");
+	   
+	   //test isValid() with supposedly valid URL's
+	   for (int i = 0; i < trueQuery.length; i++) {
+		   
+		   testString = prefix + trueQuery[i];
+		   
+		   boolean result = urlVal.isValid(testString);
+		   
+		   System.out.println("\"" + testString + "\"" + "--	Expected: true;	Actual Result: " + result);
+		   
+		   testString = "";
+	   }
+	   
+	   //test isValid() with supposedly invalid URL's
+	   for (int j = 0; j < falseQuery.length; j++) {
+		   
+		   testString = prefix + falseQuery[j];
+		   
+		   boolean result = urlVal.isValid(testString);
+		   
+		   System.out.println("\"" + testString + "\"" + "--	Expected: false;	Actual Result: " + result);
+		   
+		   testString = "";
+	   }
+	   
+}
+
+
+   public void testYourFifthPartition(){
+		 //You can use this function to implement your Second Partition testing
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+	   
+	   //The second partition tests the PORT validation of isValide().
+	   String testString;
+	   String prefix = "http://www.google.com";
+	   
+	   String[] truePort = {"", 
+			   				":80", 
+			   				":65535", 
+			   				":0"};
+	   
+	   String[] falsePort = {":65536", 
+			   					":-1", 
+			   					":80a"};
+	   
+	   
+	   System.out.println();
+	   System.out.println("-----Fifth Partition: PORT Identifier-----");
+	   
+	   //test isValid() with supposedly valid URL's
+	   for (int i = 0; i < truePort.length; i++) {
+		   
+		   testString = prefix + truePort[i];
+		   
+		   boolean result = urlVal.isValid(testString);
+		   
+		   System.out.println("\"" + testString + "\"" + "--	Expected: true;	Actual Result: " + result);
+		   
+		   testString = "";
+	   }
+	   
+	   //test isValid() with supposedly invalid URL's
+	   for (int j = 0; j < falsePort.length; j++) {
+		   
+		   testString = prefix + falsePort[j];
+		   
+		   boolean result = urlVal.isValid(testString);
+		   
+		   System.out.println("\"" + testString + "\"" + "--	Expected: false;	Actual Result: " + result);
+		   
+		   testString = "";
+	   }
+	   
+}
+   
+   
    public void testIsValid()
    {
 	   //You can use this function for programming based testing
