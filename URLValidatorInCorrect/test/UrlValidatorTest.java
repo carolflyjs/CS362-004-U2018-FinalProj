@@ -45,7 +45,6 @@ public class UrlValidatorTest extends TestCase {
 
 	   };
 
-	   System.out.println("Expected: True");
 	   for(int i = 0; i < manualTest.length; i++) {
 		   System.out.printf("\"%s\" -- Result: ", manualTest[i]);
 		   if (urlVal.isValid(manualTest[i])) {
